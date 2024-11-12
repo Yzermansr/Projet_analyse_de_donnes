@@ -11,6 +11,7 @@ data = data.drop(['Consommation brute gaz (MW PCS 0°C) - GRTgaz', 'Statut - GRT
 data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 data = data.groupby(['Date']).sum()
 data_mois = data.resample('M').sum()
+data_mois = data_mois 
 
 
 
@@ -25,11 +26,12 @@ print(data)
 
 
 solde = data2['Production nucléaire (GWh)'] + data2['Production thermique (GWh)'] + data2['Production hydraulique (GWh)'] + data2['Production éolienne (GWh)'] + data2['Production solaire (GWh)'] + data2['Production bioénergies (GWh)']
-solde = solde * 1370
+solde = solde * 2000
+
 
 data_annuelle2 = data2.groupby('Mois').sum().reset_index()
 data_annuelle2['Mois'] = pd.to_datetime(data_annuelle2['Mois'], errors='coerce')
-
+data_mois = data_mois[data_mois.index >= '2014-01-01']
 
 
 

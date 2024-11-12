@@ -11,6 +11,7 @@ data['Année'] = pd.to_datetime(data['Année'], format='%Y', errors='coerce')
 data = data.dropna(subset=['Année'])
 data.set_index('Année', inplace=True)
 
+print(data)
 Fig, ax = plt.subplots(figsize=(10, 6))
 Années = data.index.year 
 

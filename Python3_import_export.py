@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv("~/Informatique/Projet_python/Projet_analyse_de_donnes/Données/Importations_et_exportations.csv", delimiter=';', names=["Date", "Filiere", "Frontiere", "Valeur (TWh)"])
 
-data = data[data["Date"] != "Date"]  s
+data = data[data["Date"] != "Date"]  
 data["Valeur (TWh)"] = pd.to_numeric(data["Valeur (TWh)"].str.replace(',', '.'), errors='coerce')
 data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 data = data.dropna(subset=['Date'])  
